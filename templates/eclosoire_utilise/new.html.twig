@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EclosoireUtilise{% endblock %}
+
+{% block body %}
+    <h1>Create new EclosoireUtilise</h1>
+
+    {{ include('eclosoire_utilise/_form.html.twig') }}
+
+    <a href="{{ path('eclosoire_utilise_index') }}">back to list</a>
+{% endblock %}

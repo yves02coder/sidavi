@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Production index{% endblock %}
+
+{% block body %}
+    <h1>Production index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdProduction</th>
+                <th>QteTri</th>
+                <th>QteIncubee</th>
+                <th>DateIncubation</th>
+                <th>DateMirage</th>
+                <th>HeureMirage</th>
+                <th>OeufClair</th>
+                <th>OeufFeconde</th>
+                <th>DateEclosion</th>
+                <th>HeureEclosion</th>
+                <th>QtePoussinSortie</th>
+                <th>QtePoussinVendable</th>
+                <th>QtePoussinTri</th>
+                <th>EtatVente</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for production in productions %}
+            <tr>
+                <td>{{ production.idProduction }}</td>
+                <td>{{ production.qteTri }}</td>
+                <td>{{ production.qteIncubee }}</td>
+                <td>{{ production.dateIncubation ? production.dateIncubation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ production.dateMirage ? production.dateMirage|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ production.heureMirage ? production.heureMirage|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ production.oeufClair }}</td>
+                <td>{{ production.oeufFeconde }}</td>
+                <td>{{ production.dateEclosion ? production.dateEclosion|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ production.heureEclosion ? production.heureEclosion|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ production.qtePoussinSortie }}</td>
+                <td>{{ production.qtePoussinVendable }}</td>
+                <td>{{ production.qtePoussinTri }}</td>
+                <td>{{ production.etatVente }}</td>
+                <td>
+                    <a href="{{ path('production_show', {'idProduction': production.idProduction}) }}">show</a>
+                    <a href="{{ path('production_edit', {'idProduction': production.idProduction}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('production_new') }}">Create new</a>
+{% endblock %}

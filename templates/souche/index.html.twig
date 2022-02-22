@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Souche index{% endblock %}
+
+{% block body %}
+    <h1>Souche index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdSouche</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for souche in souches %}
+            <tr>
+                <td>{{ souche.idSouche }}</td>
+                <td>{{ souche.libelle }}</td>
+                <td>
+                    <a href="{{ path('souche_show', {'idSouche': souche.idSouche}) }}">show</a>
+                    <a href="{{ path('souche_edit', {'idSouche': souche.idSouche}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('souche_new') }}">Create new</a>
+{% endblock %}

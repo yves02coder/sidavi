@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FournisseurSouche index{% endblock %}
+
+{% block body %}
+    <h1>FournisseurSouche index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdFourniSche</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fournisseur_souche in fournisseur_souches %}
+            <tr>
+                <td>{{ fournisseur_souche.idFourniSche }}</td>
+                <td>
+                    <a href="{{ path('fournisseur_souche_show', {'idFourniSche': fournisseur_souche.idFourniSche}) }}">show</a>
+                    <a href="{{ path('fournisseur_souche_edit', {'idFourniSche': fournisseur_souche.idFourniSche}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fournisseur_souche_new') }}">Create new</a>
+{% endblock %}

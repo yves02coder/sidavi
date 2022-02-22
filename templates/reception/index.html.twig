@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reception index{% endblock %}
+
+{% block body %}
+    <h1>Reception index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdReception</th>
+                <th>DateReception</th>
+                <th>HeureReception</th>
+                <th>QteCartonRecu</th>
+                <th>QteOeuf</th>
+                <th>Chauffeur</th>
+                <th>MleVehicule</th>
+                <th>FournisseurId</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reception in receptions %}
+            <tr>
+                <td>{{ reception.idReception }}</td>
+                <td>{{ reception.dateReception ? reception.dateReception|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reception.heureReception ? reception.heureReception|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reception.qteCartonRecu }}</td>
+                <td>{{ reception.qteOeuf }}</td>
+                <td>{{ reception.chauffeur }}</td>
+                <td>{{ reception.mleVehicule }}</td>
+                <td>{{ reception.fournisseurId }}</td>
+                <td>
+                    <a href="{{ path('reception_show', {'idReception': reception.idReception}) }}">show</a>
+                    <a href="{{ path('reception_edit', {'idReception': reception.idReception}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reception_new') }}">Create new</a>
+{% endblock %}

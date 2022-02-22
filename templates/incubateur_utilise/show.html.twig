@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IncubateurUtilise{% endblock %}
+
+{% block body %}
+    <h1>IncubateurUtilise</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdIncubateurUtilise</th>
+                <td>{{ incubateur_utilise.idIncubateurUtilise }}</td>
+            </tr>
+            <tr>
+                <th>ProductionId</th>
+                <td>{{ incubateur_utilise.productionId }}</td>
+            </tr>
+            <tr>
+                <th>NumChariot</th>
+                <td>{{ incubateur_utilise.numChariot }}</td>
+            </tr>
+            <tr>
+                <th>QteOeuf</th>
+                <td>{{ incubateur_utilise.qteOeuf }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('incubateur_utilise_index') }}">back to list</a>
+
+    <a href="{{ path('incubateur_utilise_edit', {'idIncubateurUtilise': incubateur_utilise.idIncubateurUtilise}) }}">edit</a>
+
+    {{ include('incubateur_utilise/_delete_form.html.twig') }}
+{% endblock %}

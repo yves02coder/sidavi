@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestataire index{% endblock %}
+
+{% block body %}
+    <h1>Prestataire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdPrestataire</th>
+                <th>Libelle</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Localisation</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Civilite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prestataire in prestataires %}
+            <tr>
+                <td>{{ prestataire.idPrestataire }}</td>
+                <td>{{ prestataire.libelle }}</td>
+                <td>{{ prestataire.nom }}</td>
+                <td>{{ prestataire.prenom }}</td>
+                <td>{{ prestataire.localisation }}</td>
+                <td>{{ prestataire.email }}</td>
+                <td>{{ prestataire.contact }}</td>
+                <td>{{ prestataire.civilite }}</td>
+                <td>
+                    <a href="{{ path('prestataire_show', {'idPrestataire': prestataire.idPrestataire}) }}">show</a>
+                    <a href="{{ path('prestataire_edit', {'idPrestataire': prestataire.idPrestataire}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('prestataire_new') }}">Create new</a>
+{% endblock %}

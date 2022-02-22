@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maintenance index{% endblock %}
+
+{% block body %}
+    <h1>Maintenance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdMaintenance</th>
+                <th>NumMachine</th>
+                <th>VerificationJour</th>
+                <th>EtatReleve</th>
+                <th>Commentaire</th>
+                <th>ActionMenee</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maintenance in maintenances %}
+            <tr>
+                <td>{{ maintenance.idMaintenance }}</td>
+                <td>{{ maintenance.numMachine }}</td>
+                <td>{{ maintenance.verificationJour ? maintenance.verificationJour|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ maintenance.etatReleve }}</td>
+                <td>{{ maintenance.commentaire }}</td>
+                <td>{{ maintenance.actionMenee }}</td>
+                <td>
+                    <a href="{{ path('maintenance_show', {'idMaintenance': maintenance.idMaintenance}) }}">show</a>
+                    <a href="{{ path('maintenance_edit', {'idMaintenance': maintenance.idMaintenance}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('maintenance_new') }}">Create new</a>
+{% endblock %}

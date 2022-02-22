@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EclosoireUtilise index{% endblock %}
+
+{% block body %}
+    <h1>EclosoireUtilise index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdEclosoireUtilise</th>
+                <th>QteOeuf</th>
+                <th>NumCaisse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eclosoire_utilise in eclosoire_utilises %}
+            <tr>
+                <td>{{ eclosoire_utilise.idEclosoireUtilise }}</td>
+                <td>{{ eclosoire_utilise.qteOeuf }}</td>
+                <td>{{ eclosoire_utilise.numCaisse }}</td>
+                <td>
+                    <a href="{{ path('eclosoire_utilise_show', {'idEclosoireUtilise': eclosoire_utilise.idEclosoireUtilise}) }}">show</a>
+                    <a href="{{ path('eclosoire_utilise_edit', {'idEclosoireUtilise': eclosoire_utilise.idEclosoireUtilise}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('eclosoire_utilise_new') }}">Create new</a>
+{% endblock %}

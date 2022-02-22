@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Machines index{% endblock %}
+
+{% block body %}
+    <h1>Machines index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdMachine</th>
+                <th>Designation</th>
+                <th>TypeMachine</th>
+                <th>Capacite</th>
+                <th>Marque</th>
+                <th>NumeroSerie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for machine in machines %}
+            <tr>
+                <td>{{ machine.idMachine }}</td>
+                <td>{{ machine.designation }}</td>
+                <td>{{ machine.typeMachine }}</td>
+                <td>{{ machine.capacite }}</td>
+                <td>{{ machine.marque }}</td>
+                <td>{{ machine.numeroSerie }}</td>
+                <td>
+                    <a href="{{ path('machines_show', {'idMachine': machine.idMachine}) }}">show</a>
+                    <a href="{{ path('machines_edit', {'idMachine': machine.idMachine}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('machines_new') }}">Create new</a>
+{% endblock %}

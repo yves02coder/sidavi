@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Machines{% endblock %}
+
+{% block body %}
+    <h1>Machines</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdMachine</th>
+                <td>{{ machine.idMachine }}</td>
+            </tr>
+            <tr>
+                <th>Designation</th>
+                <td>{{ machine.designation }}</td>
+            </tr>
+            <tr>
+                <th>TypeMachine</th>
+                <td>{{ machine.typeMachine }}</td>
+            </tr>
+            <tr>
+                <th>Capacite</th>
+                <td>{{ machine.capacite }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ machine.marque }}</td>
+            </tr>
+            <tr>
+                <th>NumeroSerie</th>
+                <td>{{ machine.numeroSerie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('machines_index') }}">back to list</a>
+
+    <a href="{{ path('machines_edit', {'idMachine': machine.idMachine}) }}">edit</a>
+
+    {{ include('machines/_delete_form.html.twig') }}
+{% endblock %}

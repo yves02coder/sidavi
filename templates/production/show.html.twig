@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Production{% endblock %}
+
+{% block body %}
+    <h1>Production</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdProduction</th>
+                <td>{{ production.idProduction }}</td>
+            </tr>
+            <tr>
+                <th>QteTri</th>
+                <td>{{ production.qteTri }}</td>
+            </tr>
+            <tr>
+                <th>QteIncubee</th>
+                <td>{{ production.qteIncubee }}</td>
+            </tr>
+            <tr>
+                <th>DateIncubation</th>
+                <td>{{ production.dateIncubation ? production.dateIncubation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateMirage</th>
+                <td>{{ production.dateMirage ? production.dateMirage|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureMirage</th>
+                <td>{{ production.heureMirage ? production.heureMirage|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>OeufClair</th>
+                <td>{{ production.oeufClair }}</td>
+            </tr>
+            <tr>
+                <th>OeufFeconde</th>
+                <td>{{ production.oeufFeconde }}</td>
+            </tr>
+            <tr>
+                <th>DateEclosion</th>
+                <td>{{ production.dateEclosion ? production.dateEclosion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureEclosion</th>
+                <td>{{ production.heureEclosion ? production.heureEclosion|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>QtePoussinSortie</th>
+                <td>{{ production.qtePoussinSortie }}</td>
+            </tr>
+            <tr>
+                <th>QtePoussinVendable</th>
+                <td>{{ production.qtePoussinVendable }}</td>
+            </tr>
+            <tr>
+                <th>QtePoussinTri</th>
+                <td>{{ production.qtePoussinTri }}</td>
+            </tr>
+            <tr>
+                <th>EtatVente</th>
+                <td>{{ production.etatVente }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('production_index') }}">back to list</a>
+
+    <a href="{{ path('production_edit', {'idProduction': production.idProduction}) }}">edit</a>
+
+    {{ include('production/_delete_form.html.twig') }}
+{% endblock %}

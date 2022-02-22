@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}IncubateurUtilise index{% endblock %}
+
+{% block body %}
+    <h1>IncubateurUtilise index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdIncubateurUtilise</th>
+                <th>ProductionId</th>
+                <th>NumChariot</th>
+                <th>QteOeuf</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for incubateur_utilise in incubateur_utilises %}
+            <tr>
+                <td>{{ incubateur_utilise.idIncubateurUtilise }}</td>
+                <td>{{ incubateur_utilise.productionId }}</td>
+                <td>{{ incubateur_utilise.numChariot }}</td>
+                <td>{{ incubateur_utilise.qteOeuf }}</td>
+                <td>
+                    <a href="{{ path('incubateur_utilise_show', {'idIncubateurUtilise': incubateur_utilise.idIncubateurUtilise}) }}">show</a>
+                    <a href="{{ path('incubateur_utilise_edit', {'idIncubateurUtilise': incubateur_utilise.idIncubateurUtilise}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('incubateur_utilise_new') }}">Create new</a>
+{% endblock %}

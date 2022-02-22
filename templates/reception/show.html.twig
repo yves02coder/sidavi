@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reception{% endblock %}
+
+{% block body %}
+    <h1>Reception</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdReception</th>
+                <td>{{ reception.idReception }}</td>
+            </tr>
+            <tr>
+                <th>DateReception</th>
+                <td>{{ reception.dateReception ? reception.dateReception|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HeureReception</th>
+                <td>{{ reception.heureReception ? reception.heureReception|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>QteCartonRecu</th>
+                <td>{{ reception.qteCartonRecu }}</td>
+            </tr>
+            <tr>
+                <th>QteOeuf</th>
+                <td>{{ reception.qteOeuf }}</td>
+            </tr>
+            <tr>
+                <th>Chauffeur</th>
+                <td>{{ reception.chauffeur }}</td>
+            </tr>
+            <tr>
+                <th>MleVehicule</th>
+                <td>{{ reception.mleVehicule }}</td>
+            </tr>
+            <tr>
+                <th>FournisseurId</th>
+                <td>{{ reception.fournisseurId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reception_index') }}">back to list</a>
+
+    <a href="{{ path('reception_edit', {'idReception': reception.idReception}) }}">edit</a>
+
+    {{ include('reception/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New IncubateurUtilise{% endblock %}
+
+{% block body %}
+    <h1>Create new IncubateurUtilise</h1>
+
+    {{ include('incubateur_utilise/_form.html.twig') }}
+
+    <a href="{{ path('incubateur_utilise_index') }}">back to list</a>
+{% endblock %}

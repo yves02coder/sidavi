@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suivi index{% endblock %}
+
+{% block body %}
+    <h1>Suivi index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdSuivi</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Civilite</th>
+                <th>DateSuivi</th>
+                <th>Fonction</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for suivi in suivis %}
+            <tr>
+                <td>{{ suivi.idSuivi }}</td>
+                <td>{{ suivi.nom }}</td>
+                <td>{{ suivi.prenom }}</td>
+                <td>{{ suivi.civilite }}</td>
+                <td>{{ suivi.dateSuivi ? suivi.dateSuivi|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ suivi.fonction }}</td>
+                <td>
+                    <a href="{{ path('suivi_show', {'idSuivi': suivi.idSuivi}) }}">show</a>
+                    <a href="{{ path('suivi_edit', {'idSuivi': suivi.idSuivi}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('suivi_new') }}">Create new</a>
+{% endblock %}
